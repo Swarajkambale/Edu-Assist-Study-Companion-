@@ -1,0 +1,96 @@
+/* Basic reset */
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #f0f4f8, #d9e2ec);
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #ff6b6b; /* Unique coral color */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Container */
+.container {
+    max-width: 700px;
+    margin: 30px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+/* Title & subtitle */
+.title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #ff6b6b;
+}
+
+.subtitle {
+    font-size: 16px;
+    margin-bottom: 25px;
+    color: #555;
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 5px;
+}
+
+/* Dropdowns */
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+/* Button */
+button {
+    padding: 12px 25px;
+    background-color: #1dd1a1; /* Unique green color */
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #10ac84;
+    transform: scale(1.05);
+}
+
+/* Links */
+a {
+    color: #ff6b6b;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Chatbot placement */
+.chatbot-wrapper {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}

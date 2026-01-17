@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Assistant – Study Material Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+                                                                                                <!-- Header -->
+<header>
+    Education Assist
+</header>
+
+                                                                                                <!-- Main content -->
+<div class="container">
+    <h2 class="title">Find Your Study Material</h2>
+    <p class="subtitle">Select your class and subject to access the material instantly.</p>
+
+    <form id="materialForm">
+        <!-- Class Selection -->
+        <label for="classSelect">Select Class:</label>
+        <select id="classSelect" name="class">
+            <option value="">-- Select Class --</option>
+            {% for class_name in classes.keys() %}
+                <option value="{{ class_name }}">{{ class_name }}</option>
+            {% endfor %}
+        </select>
+
+        <!-- Subject Selection -->
+        <label for="subjectSelect">Select Subject:</label>
+        <select id="subjectSelect" name="subject">
+            <option value="">-- Select Subject --</option>
+        </select>
+
+        <!-- Submit Button -->
+        <button type="submit">Go to Material</button>
+    </form>
+
+<!-- Chatbot -->
+<div class="chatbot-wrapper">
+    <iframe
+      src="https://cdn.botpress.cloud/webchat/v3.5/shareable.html?configUrl=https://files.bpcontent.cloud/2026/01/05/16/20260105165704-E984DO6K.json"
+      width="600"
+      height="250"
+      style="border: none; border-radius: 16px;">
+    </iframe>
+</div>
+
+
+</div>
+
+<!-- JavaScript for dynamic dropdowns -->
+<script>
+    const data = {{ classes|tojson }};
+    const classSelect = document.getElementById("classSelect");
+    const subjectSelect = document.getElementById("subjectSelect");
+
+    // Populate subjects based on selected class
+    classSelect.addEventListener("change", function () {
+        const selectedClass = classSelect.value;
+        subjectSelect.innerHTML = '<option value="">-- Select Subject --</option>';
+
+        if (selectedClass && data[selectedClass]) {
+            Object.keys(data[selectedClass]).forEach(subject => {
+                const option = document.createElement("option");
+                option.value = subject;
+                option.textContent = subject;
+                subjectSelect.appendChild(option);
+            });
+        }
+    });
+
+    // Handle form submission
+    document.getElementById("materialForm").addEventListener("submit", function (e) {
+        e.preventDefault();  // prevent page reload
+        const selectedClass = classSelect.value;
+        const selectedSubject = subjectSelect.value;
+
+        if (selectedClass && selectedSubject) {
+            const link = data[selectedClass][selectedSubject];
+            if (link) {
+                window.open(link, "_blank");  // open material in new tab
+            } else {
+                alert("No material found for this subject.");
+            }
+        } else {
+            alert("Please select both class and subject.");
+        }
+    });
+</script>
+
+</body>
+</html>
